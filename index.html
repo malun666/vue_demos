@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>aicoder.com vue 入门实例</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    {{message}}
+    <hr>
+    {{message + '======'}}
+    <hr>
+    <div v-html="descript" ></div>
+    <button :disabled="isD">按钮</button>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'hi, aicoder.com<p>这是非法字符</p>',
+        descript: '<p>这里是数据描述1</p>',
+        isD: 1
+      }
+    });
+  </script>
+</body>
+</html>
