@@ -13,16 +13,14 @@
     <hr>
     {{message + '======'}}
     <hr>
-    <div v-html="descript" ></div>
-    <button :disabled="isD">按钮</button>
+    <div v-html="descript"></div>
   </div>
   <script>
     new Vue({
       el: '#app',
       data: {
         message: 'hi, aicoder.com<p>这是非法字符</p>',
-        descript: '<p>这里是数据描述1</p>',
-        isD: 1
+        descript: '<p>这里是数据描述1</p>'
       }
     });
   </script>
