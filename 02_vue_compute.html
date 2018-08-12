@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>计算属性</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>{{ age }}</p>
+    <p>{{ age * 2 }}</p>
+    <p>{{ Math.pow(age, 2) }}</p>
+
+    <p> {{new Date(date).getFullYear()}} 年  月  日</p>
+    <p>{{getDate}}</p>
+    <hr>
+    <p>{{getAge}}</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        age: 19,
+        date: 1534058341380
+      },
+      computed: {
+        getDate() {
+          let t = new Date(this.date);
+          let year = t.getFullYear();
+          let month = t.getMonth() + 1;
+          let day = t.getDate();
+          return `${year}年${month}月${day}日`;
+        }, 
+        getAge() {
+          return this.age *  2;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
