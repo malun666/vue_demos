@@ -4,25 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>aicoder.com vue 入门实例</title>
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <title>vue的计算属性</title>
+  <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
 </head>
 <body>
   <div id="app">
-    {{message}}
+    <p>{{ age * 2 }}</p>
+    <p>{{ Math.pow(age, 2) }}</p>
     <hr>
-    {{message + '======'}}
-    <hr>
-    <div v-html="descript"></div>
+    <p>{{ new Date(date).year() }}</p>
   </div>
   <script>
-    new Vue({
-      el: '#app',
-      data: {
-        message: 'hi, aicoder.com<p>这是非法字符</p>',
-        descript: '<p>这里是数据描述1</p>'
-      }
-    });
+  new Vue({
+    el: '#app',
+    data: {
+      age: 19,
+      date: 1534057706572
+    }
+  });
   </script>
 </body>
 </html>

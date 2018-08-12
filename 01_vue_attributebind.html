@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue属性绑定</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <style>
+    .act {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <span>{{name}}</span>
+    <p v-bind:id="pid" :num="number" :class="active">绑定属性</p>
+    <p :class="{act: isActive, actived: true}">样式类绑定</p>
+    <p :style="{backgroundColor: 'red', 'font-size': '18px', border: number + 'px solid #ccc' }">内联样式绑定</p>
+    <p :style="inlineStyle">这是绑定的data里面的属性</p>
+  </div>
+  <script>
+  new Vue({
+    el: '#app',
+    data: {
+      name: 'aicoder.com',
+      pid: 'aicoder',
+      number: 19,
+      active: 'act',
+      isActive: true,
+      inlineStyle: {
+        height: '200px',
+        backgroundColor: 'blue',
+        'font-size': '64px'
+      }
+    }
+  });
+  </script>
+</body>
+</html>
