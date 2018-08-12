@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>filter案例</title>
+
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>{{ name }}</p>
+    <p>{{ name | up }}</p>
+    <p>{{ demo | up }}</p>
+    <p>{{ demo | toLowCase }}</p>
+    <p>{{ gender | toGenderChinese }}</p>
+    <div v-bind:id="demo | toLowCase">{{demo}}</div>
+    <div v-bind:id="demo | up">{{demo}}</div>
+  </div>
+  <script>
+    Vue.filter('up', function(val) {
+      return val.toUpperCase();
+    });
+
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        name: 'aicoder',
+        demo: 'Aicoder.com',
+        gender: 0
+      },
+      filters: {  // 定义vue实例的 过滤器
+        toLowCase(val) {
+          return val.toLowerCase();
+        },
+        toGenderChinese(val) {
+          return val === 1 ? '男' : '女'
+        }
+       }
+    });
+  </script>
+</body>
+</html>
