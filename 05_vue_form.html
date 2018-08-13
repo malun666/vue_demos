@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,59 @@
   <title>表单的 绑定</title>
   <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
 </head>
+
 <body>
   <div id="app">
-    <input type="text" v-model="msg">
+    <input type="text" v-model.lazy="msg">
     <h3>文本域的双向绑定</h3>
-    <textarea name="txtName" id="txtName" cols="30" rows="10" v-model="msg"></textarea>
+    <textarea name="txtName" id="txtName" cols="30" rows="10" v-model.trim.lazy="msg"></textarea>
     <h3>多选框</h3>
     <input id="basketball" type="checkbox" v-model="basketball">
     <label for="basketball">是否喜欢篮球</label>
     <h3>多个多选框</h3>
-    1<input type="checkbox" v-model="ss" value="1">
-    2<input type="checkbox" v-model="ss" value="2">
-    3<input type="checkbox" v-model="ss" value="3">
-    {{msg}}<input type="checkbox" v-model="ss" :value="msg">
+    1
+    <input type="checkbox" v-model="ss" value="1"> 2
+    <input type="checkbox" v-model="ss" value="2"> 3
+    <input type="checkbox" v-model="ss" value="3"> {{msg}}
+    <input type="checkbox" v-model="ss" :value="msg">
     <h3>单选框</h3>
-    男<input type="radio" v-model="gender" value="男"> 
-    女<input type="radio" v-model="gender" value="女">
-    其他<input type="radio" v-model="gender" value="其他">
-    <hr>
-    {{gender}}
+    男
+    <input type="radio" v-model="gender" value="男"> 女
+    <input type="radio" v-model="gender" value="女"> 其他
+    <input type="radio" v-model="gender" value="其他">
+    <hr> {{gender}}
+
+    <h3>多选框-下拉选择框</h3>
+    <select v-model="selectData">
+      <option value="" disabled>请选择</option>
+      <option :value="msg">A</option>
+      <option value="B">B</option>
+      <option>C</option>
+    </select>
+    <hr> {{selectData}}
+    <h3>多选框</h3>
+    <select v-model="mulData" multiple style="width: 100px">
+      <option :value="msg">A</option>
+      <option value="B">B</option>
+      <option>C</option>
+    </select>
+    <h3>复选框的值绑定</h3>
+    <input type="checkbox" v-model="cbData" true-value="真" false-value="假" />
+    {{cbData}}
+
   </div>
+
   <script>
     let vm = new Vue({
       el: '#app',
       data: {
+        cbData: '',
         msg: 'aicoder.com',
         basketball: true,
         ss: [],
-        gender: ""
+        gender: '',
+        selectData: '',
+        mulData: []
       }
     });
   </script>
