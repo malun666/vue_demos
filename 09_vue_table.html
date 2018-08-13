@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表格显示数据案例</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+  <link href="https://cdn.bootcss.com/bulma/0.7.1/css/bulma.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <input type="button" value="添加一条数据" onclick="vm.UserList.push({age: 19, name: 'aicoder.com', address: '北京昌平王庄工业园'})">
+    <table class="table is-bordered is-striped is-hoverable">
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>地址</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template v-if="UserList.length > 0"> 
+          <tr v-for="(item, index) in UserList">
+            <td>{{ index + 1 }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.age }}</td>
+            <td>{{ item.address }}</td>
+          </tr>
+        </template> 
+        <template v-else>
+          <tr><td colspan="4">没有数据</td></tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        UserList: []
+      }
+    });
+  </script>
+</body>
+</html>
