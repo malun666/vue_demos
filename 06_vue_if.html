@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-if条件渲染</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1 v-if="ok">ok 为真值</h1>
+    <h1 v-else>其他数据</h1>
+
+    <h3>v-else-if条件渲染</h3>
+    <p v-if="A === 0"> 0 </p>
+    <p v-else-if="A === 1"> 1 </p>
+    <p v-else> 2 </p>
+
+    <h3>template模板</h3>
+    <template v-if="ok">
+      <h2>标题</h2>
+      <p>内容1</p>
+      <p>内容1</p>
+      <p>内容1</p>
+    </template>
+    <template v-else>
+      <p>没有数据</p>
+    </template>
+
+    <h3>v-if的优化处理</h3>
+    <template v-if="A==1"> 
+      用户名： <input type="text" placeholder="输入用户名" key="d">
+    </template>
+    <template v-else> 
+      邮箱： <input type="text" placeholder="输入邮箱地址" key="f">
+    </template>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        ok: true,
+        A: 1,
+        name: ''
+      }
+    });
+  </script>
+</body>
+</html>
