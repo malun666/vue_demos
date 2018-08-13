@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><v-for></v-for></title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item, index) of items" v-if="item.age > 18" :key="index">{{item.name}} ---{{item.age}}--{{index}}</li>
+    </ul>
+    <div>
+      <p v-for="(value, key, index) in User">{{key}}:{{value}} -- {{index}}</p>
+    </div>
+
+    <h3>v-for 配合template</h3>
+    <template v-for="(value, key, index) in User">
+      <h4>{{key}}</h4>
+      <p>{{value}}</p>
+      <p>{{index}}</p>
+    </template>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        items: [{age: 19, name: 'aicoder'}, {age:18, name: 'laoma'},  {age:20, name: 'laoma2'}],
+        User: {
+          age: 100,
+          name: 'aicoder.com',
+          phone: '18911865673',
+          qq: '515154084'
+        }
+      }
+    });
+  </script>
+</body>
+</html>

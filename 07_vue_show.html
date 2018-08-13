@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><v-show></v-show></title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p v-show="ok">是否显示</p>
+    <p v-if="ok">这里是if</p>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        ok: true 
+      }
+    });
+  </script>
+</body>
+</html>
