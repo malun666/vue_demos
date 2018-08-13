@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue 事件处理</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <p onclick="alert(this.innerHTML);console.log(this)">直接行内绑定点击事件</p>
+  <p id="pId">通过addEventListener绑定事件 onclick=fn</p>
+
+  <div id="app">
+    <p onclick="console.log(this)">{{ age }}</p>
+
+    <!-- vue绑定事件
+    1. 使用v-on指令，可以在行内直接执行操作vue实例属性的代码。
+    2. v-on 直接绑定一个方法
+    -->
+    <p v-on:click="age+=1; name = $event.target.innerHTML">{{ age }} -- {{name}}</p>
+    <p v-on:click="addAge">绑定方法 {{age}}</p>
+    <hr>
+    <p v-for="(item, index) of items" :key="index" @click="shmowItem(item)">{{item}}</p>
+  </div>
+
+  <script>
+    window.onload = function() {
+      // 第二种绑定事件方式
+      document.getElementById('pId').addEventListener('click', function(e) {
+        console.log(this.innerHTML);
+        console.log(e.target);
+      }, false);
+
+      // // 第三种绑定事件
+      // document.getElementById('pId') = function(e) {
+
+      // };
+    };
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        age: 19,
+        name: '',
+        items: [1, 9, 10, 22, 33]
+      },
+      methods: {
+        addAge(e) {
+          console.log(e.target);
+        },
+        showItem(item) {
+          console.log(item);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
