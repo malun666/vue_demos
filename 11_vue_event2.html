@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue的事件修饰符</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul onclick="console.log(this)">
+      <li @click.stop.right="show(item)" v-for="(item, index) of items" v-if="item>=10" v-bind:key="index">{{item}}</li>
+    </ul>
+    <ul>
+      <li v-for="(item, index) of getLargeNums" v-bind:key="index">{{item}}</li>
+    </ul>
+    <div onclick="console.log('div')">
+      <a @click.prevent.stop="" v-for="(item, index) of getLargeNums" v-bind:key="index" href="/01_vue_attributebind.html">{{item}}</a>
+    </div>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        items: [1, 9, 22, 33, 8, 6, 10]
+      },
+      methods: {
+        show(item) {
+          console.log(item);
+        }
+      },
+      computed: {  // 计算属性。 属性当普通的属性来用（vm实例的属性）
+        getSortedItems() {
+          let t = [...this.items];
+          return t.sort((a, b) => a - b);
+        },
+        getLargeNums() {
+          return this.items.filter(item=> item >= 10)
+        }
+      }
+    });
+  </script>
+</body>
+</html>
