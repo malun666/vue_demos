@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue 实例详解</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1 @click="$set($data.user, 'tt', '3333333333')">{{appName}}</h1>
+    <p v-for="(item,prop) in user" :key="prop">{{prop}}:{{item}}</p>
+    <input type="button" value="添加属性" @click="addProp">
+  </div>
+  <script>
+    let MyVue = Vue.extend({
+      data: function(data) {
+        return {
+          appName: 'aicoder.com 应用'
+        }
+      }
+    });
+
+    let vm = new MyVue({
+      el: '#app',
+      data: {
+        user: {
+          age: 19,
+          name: 'laoma'
+        }
+      },
+      methods: {
+        addProp() {
+          // this.$set(this.user, 'kk', 123);
+          // this.user.k2 = 0;
+          Vue.set(this.user, 'k3', 999);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

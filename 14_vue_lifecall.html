@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue的实例生命周期</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p ref="k">{{number}}</p>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        number: 123
+      },
+      beforeCreate: function () {
+        console.log('%cbeforeCreate 钩子执行...', 'color: red; font-size: 20px;');
+        console.log('%cthis.$el %o :', 'color:green;',this.$el);
+        
+        console.log(this.number); // 拿不到的
+
+        console.log(this.$refs.k);
+      },
+      created: function () {
+        console.log('%ccteated 钩子执行...', 'color: red; font-size: 20px;');
+        console.log(this.number)
+        console.log('%cthis.$el %o :', 'color:green;',this.$el);
+        
+        // ajax 请求
+
+        // 直接操作dom节点
+        this.$nextTick(()=>{
+          console.log('nextTick')
+          console.log(this.$refs.k);
+        });
+      },
+      beforeMount: function () {
+        console.log('%cbeforeMount 钩子执行...','color: red; font-size: 20px;');
+        console.log(this.number)
+        console.log('%cthis.$el %o :', 'color:green;',this.$el);
+        console.log(this.$refs.k);
+
+      },
+      mounted: function () {
+        console.log('%cmounted 钩子执行...','color: red; font-size: 20px;');
+        console.log(this.number)
+        console.log('%cthis.$el %o :', 'color:green;',this.$el);
+        console.log(this.$refs.k);
+
+      },
+      beforeUpdate: function () {
+        console.log('%cbeforeUpdate 钩子执行...','color: red; font-size: 20px;');
+        console.log(this.number)
+        console.log('%cthis.$el %o :', 'color:green;',this.$el);
+        console.log(this.$refs.k);
+
+      },
+      updated: function () {
+        console.log('%cupdated 钩子执行...','color: red; font-size: 20px;');
+        console.log(this.number)
+        console.log('%cthis.$el %o :', 'color:green;',this.$el);
+        console.log(this.$refs.k);
+
+      },
+      beforeDestroy: function () {
+        console.log('%cbeforeDestroy 钩子执行...','color: red; font-size: 20px;');
+        console.log(this.number)
+        console.log('%cthis.$el %o :', 'color:green;',this.$el);
+        console.log(this.$refs.k);
+
+      },
+      destroyed: function () {
+        console.log('%cdestroyed 钩子执行...','color: red; font-size: 20px;');
+        console.log(this.number)
+        console.log('%cthis.$el %o :', 'color:green;',this.$el);
+        console.log(this.$refs.k);
+
+      }
+    });
+  </script>
+</body>
+</html>

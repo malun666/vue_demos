@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue watch</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>{{a}}</h1>
+    <h2>{{b}}</h2>
+    <h3>{{c}}</h3>
+  </div>
+  <script>
+    let vm = new Vue({
+      // el: '#app',
+      data: {
+        a: 1,
+        b: 2,
+        c: 3
+      },
+      watch: {
+        a: function(newVal, oldVal) {
+          console.log('a发生了变化: %d', newVal)
+          console.log('newVal :', newVal);
+          console.log('oldVal :', oldVal);
+        }
+      }
+    });
+
+    vm.$mount('#app');
+  </script>
+</body>
+</html>
