@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue组件的生命周期</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>父组件的生命周期</h1>
+    <kk></kk>
+  </div>
+  <script>
+    Vue.component('kk', {
+      template: `<div>子组件</div>`,
+      beforeCreate () {
+        console.log('%c子组件：beforeCreate', 'color:green;font-size: 16px;');
+        this.$nextTick(()=>{
+          console.log('%c子组件：nextTick', 'color:green;font-size: 16px;');
+        })
+      },
+      created () {
+        console.log('%c子组件created', 'color:green;font-size: 16px;');
+      },
+      beforeMount () {
+        console.log('%c子组件beforeMount', 'color:green;font-size: 16px;');
+      },
+      mounted () {
+        console.log('%c子组件：mounted', 'color:green;font-size: 16px;');
+      },
+    })
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        
+      },
+      beforeCreate () {
+        console.log('%c根组件：beforeCreate', 'color:red;font-size: 20px;');
+        this.$nextTick(()=>{
+          console.log('%c根组件：nextTick', 'color:red;font-size: 20px;');
+        })
+      },
+      created () {
+        console.log('%c根组件created', 'color:red;font-size: 20px;');
+      },
+      beforeMount () {
+        console.log('%c根组件beforeMount', 'color:red;font-size: 20px;');
+      },
+      mounted () {
+        console.log('%c根组件：mounted', 'color:red;font-size: 20px;');
+      },
+    });
+  </script>
+</body>
+</html>
