@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue prop</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <log-show log="你好，应用启动了" level="消息"></log-show>
+    <log-show log="非法入侵了！" level="警告"></log-show>
+    <log-show :log="msg" level="消息"></log-show>
+    <kk-ll t="33333" :a="70"></kk-ll>
+  </div>
+  <script>
+    // 定义局部组件
+    let LogShow = {
+      props: ['log', 'level'],
+      template: `<p>{{level}}:{{log}}</p>`
+    }
+
+    // 定义一个全局组件
+    Vue.component('kk-ll', {
+      props: {
+        a: {
+          required: true,
+          type: Number,
+          validator: function(val) {
+            return Number(val) > 10;
+          }
+        },
+        b: {
+          default: 10,
+          type: Number
+        }
+      },
+      template: `<p>{{b}}--{{a}}</p>`
+    })
+
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'aicoder.com'
+      },
+      components: {
+        'log-show': LogShow
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue组件化</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <my-com v-for="(item, index) of 10" :key="index">{{item}}</my-com>
+  </div>
+  <script>
+    // 全局注册（定义）的组件
+    Vue.component('my-com', {
+      data: function() {
+        return {
+          age: 19,
+          name: 'aicoder.com'
+        }
+      },
+      template: `<div>
+        <p>{{age}}</p>
+        <p>{{name}}</p>
+        <slot></slot>
+        <hr>
+      </div>`
+    });
+
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        
+      }
+    });
+  </script>
+</body>
+</html>

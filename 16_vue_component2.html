@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue局部组件</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <show></show>
+    <show></show>
+    <show></show>
+    <show></show>
+  </div>
+  <script>
+    let KK = {
+      template: `<p>我是kk消息</p>`
+    }
+    let Show = {
+      data: function () {
+        return {
+          age: 19,
+          name: 'aicoder.com'
+        }
+      },
+      template: `<div> {{age}}-{{name}}<kk></kk></div>`,
+      components: {
+        'kk': KK
+      }
+    };
+
+    let vm = new Vue({
+      el: '#app',
+      data: {
+
+      },
+      components: {
+        'show': Show
+      }
+    });
+  </script>
+</body>
+
+</html>

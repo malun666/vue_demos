@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slot 插槽</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <kk>这里是父组件给子组件的插槽注入的内容<h1>ssssss</h1></kk>
+    <kk>
+      <ss></ss>
+    </kk>
+    <hr>
+    <h2>一下是ss组件</h2>
+    <ss>
+      <p slot="header">你好，我是头部插槽，父组件传入的。</p>
+      <template slot="footer">
+        <p>你好1{{name}}</p>
+        <p>你好2</p>
+        <p>你好3</p>
+      </template>
+    </ss>
+  </div>
+  <script>
+    Vue.component('kk', {
+      template: `<div>
+        <p>我是子组件的内容</p>
+        <slot> 子组件的默认插槽的内容，父组件如果没有传入标签或者组件或者文字，就会显示当前文字 </slot>
+      </div>`
+    });
+
+    Vue.component('ss', {
+      template:`
+        <div>
+          <h2>这是ss组件内的内容</h2>
+          <slot name="header">header</slot>
+          <hr>
+          <slot name="footer">footer</slot>
+        </div>
+      `
+    })
+
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        name: 'aicoder.com'
+      }
+    });
+  </script>
+</body>
+</html>
