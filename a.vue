@@ -17,6 +17,7 @@ export default {
 
 <style scoped>
 .tt {
+  
   color: red;
 }
 </style>
